@@ -19,8 +19,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        GetKeyVaultSecrets();
-
+        KVMessage = GetKeyVaultSecrets();
     }
 
     private string GetKeyVaultSecrets()
