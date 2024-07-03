@@ -27,7 +27,7 @@ public class IndexModel : PageModel
 
     private string GetKeyVaultSecrets()
     {
-        KeyVaultEnv = Environment.GetEnvironmentVariable("gssstgewebapp-user");
+        KeyVaultEnv = Environment.GetEnvironmentVariable("gssstgewebapp_user");
         
         if (Environment.GetEnvironmentVariable("WEBAPPLOCATION") == "HRSADEMO")
         {
