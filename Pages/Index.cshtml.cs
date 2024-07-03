@@ -32,7 +32,8 @@ public class IndexModel : PageModel
         KeyVaultSecret secret;
         try
         {
-            secret = client.GetSecret("SECRETONE");
+            // secret = client.GetSecret("SECRETONE");
+            secret = client.GetSecret("gssstgewebapp-user");
             KeyVaultSecret = secret.Value;
             return "success";
         }
