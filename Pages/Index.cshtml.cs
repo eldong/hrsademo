@@ -25,7 +25,9 @@ public class IndexModel : PageModel
     private string GetKeyVaultSecrets()
     {
         //var kvUrl = Environment.GetEnvironmentVariable("KEYVAULT_URL");
-        var kvUrl = "https://hrsademo.vault.azure.net/";
+        // var kvUrl = "https://hrsademo.vault.azure.net/";
+        var kvUrl = "https://gssstgewebapp-kv.vault.azure.net/";
+
         //blobContainerName = Environment.GetEnvironmentVariable("BLOBCONTAINERNAME");
 
         var client = new SecretClient(new Uri(kvUrl), new DefaultAzureCredential());
