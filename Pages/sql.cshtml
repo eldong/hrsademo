@@ -1,0 +1,20 @@
+@page
+@model SqlModel
+@{
+    ViewData["Title"] = "Sql Data";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Lets Get Some data from a Sql Database!</p>
+
+
+<form method="post">
+    <label for="myTextBox">Sql Retrived Data:</label>
+    <label id="myTextBox">@Model.SqlDataText</label>
+    <br /><br />
+    <input id="Submit1" type="submit" value="Call Sql DB" />
+</form>
+
+
+
+

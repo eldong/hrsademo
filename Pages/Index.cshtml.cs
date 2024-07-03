@@ -9,6 +9,7 @@ namespace webapp.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
+    public string KeyVaultUrl { get; set; }
     public string KeyVaultSecret { get; set; }
     public string KVMessage { get; set; }
 
@@ -24,11 +25,20 @@ public class IndexModel : PageModel
 
     private string GetKeyVaultSecrets()
     {
-        //var kvUrl = Environment.GetEnvironmentVariable("KEYVAULT_URL");
-        // var kvUrl = "https://hrsademo.vault.azure.net/";
+       
+        if (Environment.GetEnvironmentVariable("WEBAPPLOCATION") == "HRSADEMO")
+        {
+            KeyVaultUrl = "https://hrsademo.vault.azure.net/";
+        }
+        else
+        {
+            KeyVaultUrl = "https://gssstgewebapp-kv.vault.azure.net/";
+            // KeyVaultUrl = "https://gssstgewebapp-kv.privatelink.vaultcore.azure.net/";
+        }
+       
+       
+        //KeyVaultUrl = Environment.GetEnvironmentVariable("KEYVAULT_URL");
         
-        var kvUrl = "https://gssstgewebapp-kv.vault.azure.net/";
-        // var kvUrl = "https://gssstgewebapp-kv.privatelink.vaultcore.azure.net/";
 
         //blobContainerName = Environment.GetEnvironmentVariable("BLOBCONTAINERNAME");
 
