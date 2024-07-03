@@ -26,7 +26,9 @@ public class IndexModel : PageModel
     {
         //var kvUrl = Environment.GetEnvironmentVariable("KEYVAULT_URL");
         // var kvUrl = "https://hrsademo.vault.azure.net/";
-        var kvUrl = "https://gssstgewebapp-kv.vault.azure.net/";
+        
+        //var kvUrl = "https://gssstgewebapp-kv.vault.azure.net/";
+        var kvUrl = "https://gssstgewebapp-kv.privatelink.vaultcore.azure.net/";
 
         //blobContainerName = Environment.GetEnvironmentVariable("BLOBCONTAINERNAME");
 
