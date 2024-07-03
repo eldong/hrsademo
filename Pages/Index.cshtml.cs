@@ -42,7 +42,7 @@ public class IndexModel : PageModel
 
         //blobContainerName = Environment.GetEnvironmentVariable("BLOBCONTAINERNAME");
 
-        var client = new SecretClient(new Uri(kvUrl), new DefaultAzureCredential());
+        var client = new SecretClient(new Uri(KeyVaultUrl), new DefaultAzureCredential());
         KeyVaultSecret secret;
         try
         {
