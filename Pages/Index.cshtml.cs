@@ -12,6 +12,8 @@ public class IndexModel : PageModel
     public string KeyVaultUrl { get; set; }
     public string KeyVaultSecret { get; set; }
     public string KVMessage { get; set; }
+    public string KeyVaultEnv { get; set; }
+    
 
     public IndexModel(ILogger<IndexModel> logger)
     {
@@ -25,7 +27,8 @@ public class IndexModel : PageModel
 
     private string GetKeyVaultSecrets()
     {
-       
+        KeyVaultEnv = Environment.GetEnvironmentVariable("gssstgewebapp_user");
+        
         if (Environment.GetEnvironmentVariable("WEBAPPLOCATION") == "HRSADEMO")
         {
             KeyVaultUrl = "https://hrsademo.vault.azure.net/";
