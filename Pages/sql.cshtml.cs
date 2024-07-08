@@ -30,7 +30,6 @@ public class SqlModel : PageModel
 
     public void GetSqlData()
     {
-        //string SqlConnectionString = "Server=tcp:hrsasqldemo.database.windows.net,1433;Initial Catalog=hsradb;Persist Security Info=False;User ID=dbadmin;Password=DBpass!2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         string query = "SELECT TestData FROM TestTable";
         GetKeyVaultSecrets();   
 
