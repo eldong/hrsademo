@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using System;
+using System.Net;
 
 
 namespace webapp.Pages;
@@ -11,6 +13,8 @@ public class SqlModel : PageModel
 {
     private readonly ILogger<PrivacyModel> _logger;
     public string SqlDataText { get; set; }
+    public string DNSLookup { get; set; }
+    public string DNSLookupError { get; set; }
     public string SqlConnectionString { get; set; } = "";
 
     public string KeyVaultUrl { get; set; }
@@ -32,6 +36,27 @@ public class SqlModel : PageModel
     {
         string query = "SELECT TestData FROM TestTable";
         GetKeyVaultSecrets();   
+
+
+        string host = "gssstgesqlmihrsa-est.2f99f90d19e1.database.windows.net";
+        try
+        {
+            // Perform DNS lookup
+            IPHostEntry hostEntry = Dns.GetHostEntry(host);
+
+            DNSLookup = $"Host: {host}";
+            DNSLookupError = "";
+            foreach (IPAddress ip in hostEntry.AddressList)
+            {
+                Console.WriteLine($"IP Address: {ip}");
+                DNSLookup += ip.ToString();
+            }
+        }
+        catch (Exception ex)
+        {
+            DNSLookupError = ex.Message;
+        }
+
 
         using (SqlConnection connection = new SqlConnection(SqlConnectionString))
         {
