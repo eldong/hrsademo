@@ -35,17 +35,25 @@ public class SqlModel : PageModel
 
         using (SqlConnection connection = new SqlConnection(SqlConnectionString))
         {
-            SqlCommand command = new SqlCommand(query, connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                SqlDataText = reader["TestData"].ToString();
-                Console.WriteLine(reader["TestData"]);
-            }
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+                while (reader.Read())
+                {
+                    SqlDataText = reader["TestData"].ToString();
+                    Console.WriteLine(reader["TestData"]);
+                }
+
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                SqlDataText = e.Message;
+                return;
+            }
         }
     }
 
