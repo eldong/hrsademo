@@ -38,7 +38,15 @@ public class SqlModel : PageModel
         GetKeyVaultSecrets();   
 
 
-        string host = "gssstgesqlmihrsa-est.2f99f90d19e1.database.windows.net";
+        string host;
+        if (Environment.GetEnvironmentVariable("WEBAPPLOCATION") == "HRSADEMO")
+        {
+            host = "hrsasqldemo.database.windows.net";
+        }
+        else
+        {
+            host = "gssstgesqlmihrsa-est.2f99f90d19e1.database.windows.net";
+        }
         try
         {
             // Perform DNS lookup
@@ -49,7 +57,7 @@ public class SqlModel : PageModel
             foreach (IPAddress ip in hostEntry.AddressList)
             {
                 Console.WriteLine($"IP Address: {ip}");
-                DNSLookup += ip.ToString();
+                DNSLookup += " - " + ip.ToString();
             }
         }
         catch (Exception ex)
